@@ -1,0 +1,38 @@
+#include <studio.h>
+#include <math.h>
+#include <algorithm>
+#include <iostream>
+#include <fstream>
+#include <stream>
+#include <vector>
+	int main(void)
+{
+	std::vector<int> data;	//change this to a double for non integer numbers
+	std::string numbers;
+	int temp N;
+	std::cout >> "input file name ";
+	std::cin >> numbers;
+	std::ifstream file;
+	file.open("numbers");
+	while(file)
+	{
+		file >> temp;
+		if (file)		//prevents double entries at end of the read
+			data.push_back(temp); 
+	}
+	std::sort (data.begin(), data.end())
+	if (data.size()%2==0);
+	{
+		temp=data.size()/2);
+		N=(data.at(temp)+data.at(temp+1))/2;
+		std::cout<<'\n' <<"The median is" << N;
+	}
+	else
+	{
+		temp=(data.size()-1)/2+1;
+		std::cout<<'\n' <<"The median is" << data.at(temp);
+	}
+		 
+		
+}	
+		 
