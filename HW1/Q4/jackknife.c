@@ -8,7 +8,8 @@ int main(void)
 {
 	std::vector<double> data;//change this to a double for non integer numbers
 	std::string numbers;
-	double tempdata, tempmean, valuecount=0;
+	double *aves;		//for the callculation of the deviation
+	double tempdata, tempmean, valuecount=0, deviation=0, dcount=0;
 	double mean, total=0;
 	std::cout << "input file name ";
 	std::cin >> numbers;
@@ -25,13 +26,20 @@ int main(void)
 	{
 		total+=data.at(I);
 	}
+	aves = new double[data.size()];
 	for(int J=0; J<data.size();++J)
 		{
 		tempmean=(total-data.at(J))/(data.size()-1);
 		valuecount+=tempmean;
+		aves[J]=tempmean;
 		}
 	mean=valuecount/data.size();
-	std::cout<<"the jack knife mean is="<< mean << std::endl;
+	for(int k=0; k<data.size(); ++k)
+	{
+		dcount+=pow(aves[k]-mean,2);
+	}
+	deviation = sqrt(dcount/data.size());
+	std::cout<<"the jack knife mean is="<< mean <<" + or - "<<deviation<< std::endl;
 	 	
 }	
 		 
